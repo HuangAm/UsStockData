@@ -1,0 +1,14 @@
+function senddata(data){
+	$.ajax({
+    url:"https://localhost:8889/data",
+    type:"POST",
+    data:{"welcome":data},
+    success:function(res){console.log(res)}
+    })
+}
+
+IPython.notebook.kernel.ws.onmessage = function (e) {
+        console.log("on message entry! from celv1");
+        console.log(e.data);
+		senddata(e.data);
+    }

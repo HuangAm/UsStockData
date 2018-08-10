@@ -1,0 +1,27 @@
+from quantopian.pipeline import Pipeline
+from quantopian.research import run_pipeline
+from quantopian.pipeline.data import Fundamentals
+pipe = pipe = Pipeline(
+    columns = {
+        'pe_ratio' : Fundamentals.pe_ratio.latest,
+        'market_cap' : Fundamentals.market_cap.latest,
+        'pb_ratio':Fundamentals.pb_ratio.latest,
+        'roa':Fundamentals.roa.latest,
+        'operating_cash_flow':Fundamentals.operating_cash_flow.latest,
+        'cash_flow_from_continuing_operating_activities':Fundamentals.cash_flow_from_continuing_operating_activities.latest,
+        'long_term_debt_equity_ratio':Fundamentals.long_term_debt_equity_ratio.latest,
+        'current_ratio':Fundamentals.current_ratio.latest,
+        'shares_outstanding':Fundamentals.shares_outstanding.latest,
+        'gross_margin':Fundamentals.gross_margin.latest,
+        'assets_turnover':Fundamentals.assets_turnover.latest,
+    },
+    screen = None
+)
+
+# Run the pipeline
+fundamental_data = run_pipeline(pipe, start_date = '2018-08-07', end_date = '2018-08-07')
+total_row = fundamental_data.iloc[:,0].size   # 8646
+a,b = divmod(total_row,50)
+# for i in range(a):
+#     print(fundamental_data[i*50:(i+1)*50])
+print(fundamental_data[-b:])
