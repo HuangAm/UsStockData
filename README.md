@@ -10,7 +10,7 @@
 - 在浏览器输入https://localhost:8889/data进行访问(好像是解决浏览器同源,反正没这一步没报错)
 - 在浏览器终端运行js中的两个函数代码(如果没有Ipython对象，进入iframe指定的地址即可)
 
-### fundamental_data_v1
+### fundamental_data_v2
 **功能**
 - 爬取Quantopian的基准数据  
 
